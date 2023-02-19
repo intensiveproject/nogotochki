@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet id="7" author="mikhail">
+        <createTable tableName="notation">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_notationId" nullable="false"/>
+            </column>
+            <column name="stars" type="real">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_and_time" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="message" type="varchar(255)"/>
+            <column name="producerId" type="int">
+                <constraints referencedTableName="producer" referencedColumnNames="id" foreignKeyName="fk_notation_producerId" nullable="false"/>
+            </column>
+            <column name="customerId" type="int">
+                <constraints referencedTableName="customer" referencedColumnNames="id" foreignKeyName="fk_notation_customerId" nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

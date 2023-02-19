@@ -4,16 +4,13 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
-    <changeSet id="2" author="mikhail">
+    <changeSet id="4" author="mikhail">
         <createTable tableName="customer">
             <column name="id" type="int" autoIncrement="true">
                 <constraints primaryKey="true" primaryKeyName="pk_customerId" nullable="false"/>
             </column>
             <column name="detailsId" type="int">
                 <constraints referencedTableName="details" referencedColumnNames="id" foreignKeyName="fk_customer_detailsId" nullable="false"/>
-            </column>
-            <column name="notationId" type="int">
-                <constraints referencedTableName="notation" referencedColumnNames="id" foreignKeyName="fk_customer_notationId" nullable="false"/>
             </column>
         </createTable>
     </changeSet>

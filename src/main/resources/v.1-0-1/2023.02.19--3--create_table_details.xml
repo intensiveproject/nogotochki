@@ -4,18 +4,21 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
-    <changeSet id="5" author="mikhail">
-        <createTable tableName="lashes">
+    <changeSet id="3" author="mikhail">
+        <createTable tableName="details">
             <column name="id" type="int" autoIncrement="true">
-                <constraints primaryKey="true" primaryKeyName="pk_lashesId" nullable="false"/>
+                <constraints primaryKey="true" primaryKeyName="pk_detailsId" nullable="false"/>
             </column>
-            <column name="type" type="varchar(50)">
+            <column name="name" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>
-            <column name="width" type="real">
+            <column name="surname" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>
-            <column name="form" type="varchar(50)">
+            <column name="phone" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>
         </createTable>

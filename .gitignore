@@ -1,0 +1,7 @@
+*.iml
+/.idea/
+# Project exclude paths
+/target/
+# liquibase properties (user and pass for Postgresql)
+*.properties
+!application.properties

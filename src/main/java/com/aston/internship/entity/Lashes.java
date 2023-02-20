@@ -18,9 +18,9 @@ public class Lashes {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    String type;
-    String form;
-    Double length;
+    private String type;
+    private String form;
+    private Double length;
 
     public Lashes() {
     }

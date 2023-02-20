@@ -29,6 +29,9 @@ public class Feedback {
     @ManyToOne(fetch = FetchType.EAGER)
     private Producer producer;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Customer customer;
+
     public Feedback() {
     }
 }

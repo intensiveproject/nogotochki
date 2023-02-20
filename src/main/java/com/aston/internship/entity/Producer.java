@@ -34,12 +34,16 @@ public class Producer {
     private SocialNetwork socialNetworks;
 
     @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL)
-    @JoinColumn(name = "master_id")
-    private List<LashesPrice> lashesPrice;
+    @JoinColumn(name = "producer_id")
+    private List<LashesPrice> lashesPrices;
 
     @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL)
-    @JoinColumn(name = "master_id")
+    @JoinColumn(name = "producer_id")
     private List<Notation> schedule;
+
+    @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL)
+    @JoinColumn(name = "producer_id")
+    private List<Feedback> feedbacks;
 
     private Double avRate;
 

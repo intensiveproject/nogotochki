@@ -29,7 +29,7 @@ public class Customer {
 
     @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL)
     @JoinColumn(name = "customer_id")
-    private List<Notation> schedule;
+    private List<Notation> notations;
 
     public Customer() {
     }

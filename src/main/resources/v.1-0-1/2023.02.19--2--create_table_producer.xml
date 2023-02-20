@@ -4,10 +4,14 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
-    <changeSet id="3" author="mikhail">
-        <createTable tableName="details">
-            <column name="id" type="int" autoIncrement="true">
-                <constraints primaryKey="true" primaryKeyName="pk_detailsId" nullable="false"/>
+    <changeSet id="2" author="mikhail">
+        <createTable tableName="producer">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_producer_id" nullable="false"/>
+            </column>
+            <column name="networks" type="varchar(255)"/>
+            <column name="av_rate" type="real">
+                <constraints nullable="false"/>
             </column>
             <column name="name" type="varchar(50)">
                 <constraints nullable="false"/>

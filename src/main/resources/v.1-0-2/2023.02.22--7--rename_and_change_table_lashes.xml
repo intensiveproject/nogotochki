@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet id="7" author="mikhail">
+        <renameTable oldTableName="lashes" newTableName="service_type"/>
+        <dropColumn tableName="service_type">
+            <column name="type"/>
+            <column name="form"/>
+            <column name="length"/>
+        </dropColumn>
+        <addColumn tableName="service_type">
+            <column name="title" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="notation_id" type="bigint">
+                <constraints referencedTableName="notation" referencedColumnNames="id" foreignKeyName="fk_service_type_notation_id" nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

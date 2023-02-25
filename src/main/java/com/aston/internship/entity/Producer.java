@@ -1,6 +1,8 @@
 package com.aston.internship.entity;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,8 +29,9 @@ public class Producer {
     @Embedded
     private Details details;
 
-    @Embedded
-    private SocialNetwork socialNetworks;
+    @Column
+    @ElementCollection
+    private List<String> socialNetworks;
 
     @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL)
     @JoinColumn(name = "producer_id")

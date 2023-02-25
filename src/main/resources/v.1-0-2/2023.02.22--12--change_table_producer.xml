@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet id="12" author="mikhail">
+        <dropColumn tableName="producer">
+            <column name="networks"/>
+            <column name="av_rate"/>
+            <column name="phone"/>
+            <column name="email"/>
+        </dropColumn>
+        <addColumn tableName="producer">
+            <column name="password" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="social_networks" type="varchar(255)"/>
+            <column name="service_id" type="bigint">
+                <constraints referencedTableName="service" referencedColumnNames="id" foreignKeyName="fk_producer_service_id" nullable="false"/>
+            </column>
+            <column name="notation_id" type="bigint">
+                <constraints referencedTableName="notation" referencedColumnNames="id" foreignKeyName="fk_producer_notation_id" nullable="false"/>
+            </column>
+            <column name="feedback_id" type="bigint">
+                <constraints referencedTableName="feedback" referencedColumnNames="id" foreignKeyName="fk_producer_feedback_id" nullable="false"/>
+            </column>
+            <column name="av_rate" type="real">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <include file="src/main/resources/v.1-0-2/2023.02.22--7--rename_and_change_table_lashes.xml"/>
+    <include file="src/main/resources/v.1-0-2/2023.02.22--8--rename_and_change_table_lashes_price.xml"/>
+    <include file="src/main/resources/v.1-0-2/2023.02.22--9--change_table_notation.xml"/>
+    <include file="src/main/resources/v.1-0-2/2023.02.22--10--change_table_feedback.xml"/>
+    <include file="src/main/resources/v.1-0-2/2023.02.22--11--change_table_customer.xml"/>
+    <include file="src/main/resources/v.1-0-2/2023.02.22--12--change_table_producer.xml"/>
+</databaseChangeLog>

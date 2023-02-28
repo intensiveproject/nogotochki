@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet id="8" author="mikhail">
+        <renameTable oldTableName="lashes_price" newTableName="service"/>
+        <dropColumn tableName="service">
+            <column name="lashes_id"/>
+            <column name="price"/>
+            <column name="producer_id"/>
+        </dropColumn>
+        <addColumn tableName="service">
+            <column name="producer_id" type="bigint">
+                <constraints referencedTableName="producer" referencedColumnNames="id" foreignKeyName="fk_service_producer_id" nullable="false"/>
+            </column>
+            <column name="service_type_id" type="bigint">
+                <constraints referencedTableName="service_type" referencedColumnNames="id" foreignKeyName="fk_service_service_type_id" nullable="false"/>
+            </column>
+            <column name="description" type="varchar(255)"/>
+            <column name="price" type="real">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

@@ -19,9 +19,9 @@ public class CommonUserDetailsService implements UserDetailsService {
 
     @Override
     @Transactional
-    public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(final String login) throws UsernameNotFoundException {
         return detailsRepository
-                .findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found " + username));
+                .findByUsername(login)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found " + login));
     }
 }

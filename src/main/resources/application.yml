@@ -1,0 +1,40 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://containers-us-west-196.railway.app:7173/railway
+    username: postgres
+    password: 8eBZOGVOITz2cgJp4T54
+#    url: jdbc:postgresql://localhost:5432/lashes_db
+#    username: postgres
+#    password: root
+
+  jpa:
+    #выводит тела запросов к БД в консоль
+    show-sql: true
+    generate-ddl: false
+    hibernate.ddl-auto: update
+    properties:
+      hibernate.jdbc.lob.non_contextual_creation: true
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs:
+    path: /docs
+
+rsa:
+  private-key:
+    certificates/private.pem
+  public-key:
+    certificates/public.pem
+
+
+
+logging:
+  file:
+    name: application.log
+
+server:
+  servlet:
+    context-path: "/"
+  port: 8098

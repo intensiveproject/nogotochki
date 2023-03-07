@@ -1,11 +1,13 @@
 package com.aston.internship.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.ElementCollection;
+import com.aston.internship.dto.AppRole;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.EnumType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
@@ -15,7 +17,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.validation.constraints.Size;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Set;
 
 @AllArgsConstructor
 @Data
@@ -35,12 +36,26 @@ public class Details implements UserDetails {
 
     private String phone;
     private String email;
+    @Enumerated(EnumType.STRING)
+    private AppRole role;
 
-    @Column
-    @ElementCollection
-    private Set<String> roles;
+    @OneToOne(mappedBy = "details")
+    private Customer customer;
+
+    @OneToOne(mappedBy = "details")
+    private Producer producer;
 
     public Details() {
+    }
+
+    public Details(String name, String surname, String username, String password, String phone, String email, AppRole role) {
+        this.name = name;
+        this.surname = surname;
+        this.username = username;
+        this.password = password;
+        this.phone = phone;
+        this.email = email;
+        this.role = role;
     }
 
     @Override

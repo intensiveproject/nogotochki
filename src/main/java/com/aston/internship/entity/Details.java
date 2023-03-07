@@ -1,23 +1,29 @@
 package com.aston.internship.entity;
 
-import javax.persistence.Embeddable;
-import javax.persistence.Transient;
-import javax.validation.constraints.Size;
-
+import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import javax.validation.constraints.Size;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @Data
-@Embeddable
+@Entity
 public class Details implements UserDetails {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String name;
     private String surname;
@@ -26,12 +32,12 @@ public class Details implements UserDetails {
     private String username;
     @Size(min=5, message = "Не меньше 5 знаков")
     private String password;
-    @Transient
-    private String passwordConfirm;
 
     private String phone;
     private String email;
 
+    @Column
+    @ElementCollection
     private Set<String> roles;
 
     public Details() {
@@ -49,7 +55,7 @@ public class Details implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return getRoles().stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList());
+        return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
     }
 
     @Override

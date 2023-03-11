@@ -4,7 +4,9 @@ import com.aston.internship.TestDetails;
 import com.aston.internship.repository.DetailsRepository;
 
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -20,12 +22,14 @@ import org.springframework.util.MultiValueMap;
 
 import java.lang.reflect.Field;
 
+import static com.aston.internship.TestDetails.TestDetailsBuilder;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 
 @WebMvcTest(RegistrationController.class)
 @AutoConfigureMockMvc(addFilters = false)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestPropertySource(locations= "classpath:application-test.properties")
 public class RegistrationControllerTest {
 
@@ -38,17 +42,13 @@ public class RegistrationControllerTest {
     @MockBean
     private PasswordEncoder passwordEncoder;
 
+    private TestDetails details;
+
+    @BeforeAll
+    void initialize(){ details = TestDetailsBuilder();}
+
     @Test
     public void registrationControllerIsCorrectlyWorking() throws Exception {
-
-       TestDetails details = TestDetails.builder()
-               .name("test_name")
-               .surname("test_surname")
-               .login("test_login")
-               .password("test_password")
-               .phone("89998887766")
-               .email("test_email")
-               .build();
 
         MultiValueMap<String, String> allParams = new LinkedMultiValueMap<>();
         Field [] fields = details.getClass().getDeclaredFields();

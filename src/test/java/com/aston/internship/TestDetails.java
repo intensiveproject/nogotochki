@@ -14,4 +14,15 @@ public class TestDetails{
     String password;
     String phone;
     String email;
+
+    public static TestDetails TestDetailsBuilder(){
+        return TestDetails.builder()
+                .name("test_name")
+                .surname("test_surname")
+                .login("test_login")
+                .password("test_password")
+                .phone("89998887766")
+                .email("test_email")
+                .build();
+    }
 }
